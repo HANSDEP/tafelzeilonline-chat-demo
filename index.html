@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>TafelzeilOnline - Zendesk chat</title>
+  <script>
+    // ?nieuw=1: wis de widgetsessie vóór de widget laadt, zodat er een vers gesprek start
+    if (new URLSearchParams(location.search).has('nieuw')) {
+      try {
+        sessionStorage.clear(); localStorage.clear();
+        document.cookie.split(';').forEach(function (c) {
+          var n = c.split('=')[0].trim();
+          if (n) document.cookie = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        });
+      } catch (e) {}
+      history.replaceState(null, '', location.pathname);
+    }
+  </script>
+  <!-- Zendesk messaging widget (demo environment d3v-neoplesupport) -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=270edec0-1711-4e16-85ca-7caf5529f0ef"></script>
+
+  <style>
+    :root { --bg: #f5f6f8; --card: #ffffff; --text: #282359; --muted: #6b7280; --accent: #ef4a45; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+    header { background: #282359; color: #fff; padding: 20px 32px; }
+    header h1 { margin: 0; font-size: 20px; font-weight: 600; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
+    .card { background: var(--card); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,.06); padding: 48px; max-width: 560px; text-align: center; }
+    .card h2 { margin: 0 0 12px; font-size: 28px; }
+    .card p { margin: 0 0 8px; color: var(--muted); line-height: 1.6; }
+    .hint { margin-top: 28px; font-size: 14px; }
+    .hint strong { color: var(--accent); }
+    button { margin-top: 8px; padding: 8px 14px; border-radius: 8px; border: 1px solid #d1d5db; background: #fff; cursor: pointer; font: inherit; }
+    nav { margin-top: 24px; font-size: 14px; }
+    nav a { color: var(--accent); }
+    .files { margin-top: 20px; font-size: 13px; }
+    .files a { color: var(--muted); }
+    footer { text-align: center; padding: 20px; font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header><h1>TafelzeilOnline</h1></header>
+  <main>
+    <div class="card">
+      <h2>Welkom 👋</h2>
+      <p>Vraag over je bestelling, een tafelzeil op maat of een retour? We helpen je graag.</p>
+      <p>Klik rechtsonder op de chat-knop om een gesprek te starten.</p>
+      <p class="hint">Deze chat loopt via <strong>Zendesk</strong>.</p>
+      <p class="hint"><button id="reset">Nieuw gesprek starten</button></p>
+      <p class="hint">Na een overdracht naar een collega reageert de Neople niet meer in dat gesprek. Start dan een nieuw gesprek.</p>
+      <p class="files">Testbestanden: <a href="meetlint-199cm.png" download>foto meetlint (199 cm)</a> · <a href="logo-klant.png" download>logo als pixelbestand</a></p>
+      <nav><a href="trengo.html">Naar de Trengo-chat</a></nav>
+    </div>
+  </main>
+  <footer>&copy; TafelzeilOnline (demo)</footer>
+  <script>
+    document.getElementById('reset').addEventListener('click', function () {
+      try { zE('messenger', 'close'); } catch (e) {}
+      setTimeout(function () {
+        try { sessionStorage.clear(); localStorage.clear(); } catch (e) {}
+        location.href = location.pathname + '?nieuw=1';
+      }, 400);
+    });
+  </script>
+</body>
+</html>
