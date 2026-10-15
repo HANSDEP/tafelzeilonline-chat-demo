@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>TafelzeilOnline - Trengo chat</title>
+  <title>TafelzeilOnline - Trengo chat (demo)</title>
   <script>
     // ?nieuw=1: wis de widgetsessie vóór de widget laadt, zodat er een vers gesprek start
     if (new URLSearchParams(location.search).has('nieuw')) {
@@ -19,42 +19,28 @@
     }
   </script>
   <style>
-    :root { --bg: #f5f6f8; --card: #ffffff; --text: #282359; --muted: #6b7280; --accent: #ef4a45; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
-    header { background: #282359; color: #fff; padding: 20px 32px; }
-    header h1 { margin: 0; font-size: 20px; font-weight: 600; }
-    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
-    .card { background: var(--card); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,.06); padding: 48px; max-width: 560px; text-align: center; }
-    .card h2 { margin: 0 0 12px; font-size: 28px; }
-    .card p { margin: 0 0 8px; color: var(--muted); line-height: 1.6; }
-    .hint { margin-top: 28px; font-size: 14px; }
-    .hint strong { color: var(--accent); }
-    button { margin-top: 8px; padding: 8px 14px; border-radius: 8px; border: 1px solid #d1d5db; background: #fff; cursor: pointer; font: inherit; }
-    nav { margin-top: 24px; font-size: 14px; }
-    nav a { color: var(--accent); }
-    .files { margin-top: 20px; font-size: 13px; }
-    .files a { color: var(--muted); }
-    footer { text-align: center; padding: 20px; font-size: 13px; color: var(--muted); }
+    html, body { margin: 0; background: #fafafa; }
+    .site { display: block; width: 100%; max-width: 1440px; margin: 0 auto; height: auto; user-select: none; -webkit-user-drag: none; }
+    .demo { position: fixed; left: 16px; bottom: 16px; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px;
+      max-width: calc(100vw - 120px); padding: 8px 14px; border-radius: 999px; background: rgba(40, 35, 89, .92); color: #fff;
+      font: 13px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; box-shadow: 0 6px 24px rgba(0,0,0,.18); }
+    .demo strong { font-weight: 600; letter-spacing: .02em; }
+    .demo a, .demo button { color: #fff; opacity: .85; text-decoration: none; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+    .demo a:hover, .demo button:hover { opacity: 1; text-decoration: underline; }
+    .demo .sep { opacity: .4; }
   </style>
 </head>
 <body>
-  <header><h1>TafelzeilOnline</h1></header>
-  <main>
-    <div class="card">
-      <h2>Welkom 👋</h2>
-      <p>Vraag over je bestelling, een tafelzeil op maat of een retour? We helpen je graag.</p>
-      <p>Klik rechtsonder op de chat-knop om een gesprek te starten.</p>
-      <p class="hint">Deze chat loopt via <strong>Trengo</strong>.</p>
-      <p class="hint"><button id="reset">Nieuw gesprek starten</button></p>
-      <p class="hint">Na een overdracht naar een collega reageert de Neople niet meer in dat gesprek. Start dan een nieuw gesprek.</p>
-      <p class="files">Testbestanden: <a href="meetlint-199cm.png" download>foto meetlint (199 cm)</a> · <a href="logo-klant.png" download>logo als pixelbestand</a></p>
-      <nav><a href="./">Naar de Zendesk-chat</a></nav>
-    </div>
-  </main>
-  <footer>&copy; TafelzeilOnline (demo)</footer>
-  <script type="text/javascript">
+  <img class="site" src="homepage.jpg" alt="TafelzeilOnline homepage (demo-achtergrond)" />
+  <div class="demo" role="navigation" aria-label="Demo">
+    <strong>Demo</strong><span class="sep">·</span>
+    <a href="./">Zendesk-chat</a><span class="sep">·</span>
+    <button id="reset" type="button">Nieuw gesprek</button><span class="sep">·</span>
+    <a href="meetlint-199cm.png" download>Foto meetlint</a><span class="sep">·</span>
+    <a href="logo-klant.png" download>Logo</a>
+  </div>
+  <script>
     window.Trengo = window.Trengo || {};
     window.Trengo.key = 'SpRMbb7QyJ16D83AmSe5';
     (function (d, script) {
